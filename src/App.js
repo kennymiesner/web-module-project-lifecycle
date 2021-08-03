@@ -1,25 +1,35 @@
-import logo from './logo.svg';
+import React from 'react';
+
+import data from './data';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Pokemon from './components/Pokemon';
+
+class App extends React.Component {
+  state = {
+    pokemon: []
+  }
+
+  componentDidMount() {
+    console.log("App: Component Mounts");
+    setTimeout (()=>{
+      this.setState({
+        ...this.state,
+        pokemon: data
+      })
+    }, 5000);
+  }
+
+  render() {
+    console.log("App: Renders Component");
+    return (
+      <div className="App">
+        {
+          (this.state.pokemon.length > 0) ? <Pokemon pokemon={this.state.pokemon} /> : <div>Loading</div>
+        }
+      </div>
+    );
+  }
 }
 
 export default App;
