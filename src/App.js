@@ -1,35 +1,33 @@
-import React from 'react';
+import React from 'react'
 
-import data from './data';
-import './App.css';
+import data from './data'
+import './App.css'
 
-import Pokemon from './components/Pokemon';
+import Users from './components/Users'
 
 class App extends React.Component {
   state = {
-    pokemon: []
+    users: []
   }
 
   componentDidMount() {
-    console.log("App: Component Mounts");
     setTimeout (()=>{
       this.setState({
         ...this.state,
-        pokemon: data
+        users: data
       })
-    }, 5000);
+    }, 0)
   }
 
   render() {
-    console.log("App: Renders Component");
     return (
-      <div className="App">
+      <div className="container">
         {
-          (this.state.pokemon.length > 0) ? <Pokemon pokemon={this.state.pokemon} /> : <div>Loading</div>
+          (this.state.users.length > 0) ? <Users users={this.state.users} /> : <div>Loading</div>
         }
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
